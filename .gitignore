@@ -1,0 +1,18 @@
+# Old android stuff
+.settings/
+build.properties
+build.xml
+default.properties
+local.properties
+bin/
+gen/
+res/values/dropbox.xml
+proguard.cfg
+
+# Android studio
+local.properties
+*.iml
+*.ipr
+*.iws
+.idea/
+build/
