@@ -16,3 +16,4 @@ local.properties
 *.iws
 .idea/
 build/
+.gradle/
