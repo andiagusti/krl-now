@@ -175,7 +175,14 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
         protected Long doInBackground(String... destinations) {
             String destination = destinations[0];
             HttpRequest x = HttpRequest.get("http://infoka.krl.co.id/to/" + destination);
-            x.
+            String[] cookiesRaw1 = x.header("Cookie").split("; ");
+            String ci_session;
+            for (String cookies : cookiesRaw1 ) {
+                if (cookies.startsWith("ci_session")) {
+                    ci_session = cookies.substring("ci_session".length());
+                }
+            }
+            return null;
         }
     }
 }
