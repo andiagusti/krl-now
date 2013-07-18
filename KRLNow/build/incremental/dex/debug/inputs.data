@@ -1,0 +1,18 @@
+# incremental data. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1374141819000 473 5756c169f9c9a48b52cc2440fd13d90332a2b7ab /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$layout.class
+1374141819000 657 ae7b14f646201864adcaa73231ba779ad245c6fa /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R.class
+1374118583000 341 35d577d7c1cedf6f29d1cd41bc3bd8e01881be09 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/BuildConfig.class
+1374142832000 3463 45999ea29d7f7ef9b20c00cd16c01f84da8f271f /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/org/mufid/krlnow/activities/MainTableActivity.class
+1374118583000 334 162747b1ec9057219916ddd688feca58f34a4ccd /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$attr.class
+1374141819000 1043 eada0d644b467423de1ba3b1d2cb9ebe7e531ecf /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/models/TrainStatus.class
+1369432937000 490914 3fe75433da602500cc71fcc1c46e5550291dd45d /Applications/Android Studio.app/sdk/extras/android/m2repository/com/android/support/support-v4/13.0.0/support-v4-13.0.0.jar
+1374141819000 564 11d6c87d5923022ea40662987ea69ba45ad7e72f /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$id.class
+1374141819000 425 0c3108a995d9fe2f444f7ee4d1f9f6338febba96 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$style.class
+1374141819000 1266 f53943e084774d583e18e48722803efc3e13c6d6 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/models/TrainStatusModel.class
+1374118583000 401 6acfa8e8b323e1bbae1dd3e5b0ed796a78323a56 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$drawable.class
+1374142958000 2641 3661c39bf31f1a225dea5ebaf586eb3695e7c15f /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/org/mufid/krlnow/activities/MainTableActivity$TrainScheduleTableFragment.class
+1374141819000 545 e2130c3f4c1b0cb7e23d3673332d9f345476198e /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$string.class
+1374141819000 388 cdbd83543d8ea5001639e1d2c4908b2c2fce2942 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$menu.class
+1374118583000 455 8270755763bc0d817db7adcc1de75f8b134a7a07 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/classes/debug/org/mufid/krlnow/R$dimen.class

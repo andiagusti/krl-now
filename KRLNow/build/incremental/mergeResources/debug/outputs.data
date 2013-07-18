@@ -1,0 +1,15 @@
+# incremental data. DO NOT EDIT.
+# format is <lastModified> <length> <SHA-1> <path>
+# Encoding is UTF-8
+1374118580000 352 7d96ea12626511fcf0950affaa56abfb3f5e6b28 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/menu/main_table.xml
+1374118580000 9487 7e58a59b9c3cf7a7a1df12376c329591dd31f5e4 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/drawable-xhdpi/ic_launcher.png
+1374118580000 425 172e368c0518185b4ba79e1ef460496343395081 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/layout/activity_main.xml
+1374142389000 1212 5d3b9db29c228ed37e6fd54d857f6bf1c5007463 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/layout/fragment_main_table.xml
+1374118580000 249 ed758e13358d3a3a47fb75831f7fe760b9b07dee /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/values-sw720dp-land/values.xml
+1374118580000 1222 a642ac6af72c969f7a32e1710b6955309f7abde4 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/values/values.xml
+1374118580000 3156 be9d6d2174e9cbaabca59e8090160434dbd60002 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/drawable-mdpi/ic_launcher.png
+1374118580000 318 602c36a46fcb85b99d16a9172bc20a03e1ff879c /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/values-v11/values.xml
+1374118580000 18087 8d35b7c0e81c9caf7ee547905d69c9542a08b87f /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/drawable-xxhdpi/ic_launcher.png
+1374118580000 6120 ced3785afb467e5670c9c7db0d3a345d15454ea5 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/drawable-hdpi/ic_launcher.png
+1374118580000 332 4fd5dd30506fb8e20b9147ba254df242c88d59f2 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/values-v14/values.xml
+1374142096000 1018 b61d2038dc72e49d814e352506d6f85b8188a293 /Users/mufid/AndroidStudioProjects/KRLNowProject/KRLNow/build/res/all/debug/layout/row_table.xml
