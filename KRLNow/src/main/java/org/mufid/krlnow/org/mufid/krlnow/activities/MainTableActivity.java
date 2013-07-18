@@ -9,19 +9,25 @@ import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.format.Formatter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.github.kevinsawicki.http.HttpRequest;
+import com.google.gson.Gson;
 
 import org.mufid.krlnow.R;
+import org.mufid.krlnow.models.TrainStatusRawData;
+
+import java.util.zip.Inflater;
 
 public class MainTableActivity extends FragmentActivity implements ActionBar.OnNavigationListener {
 
@@ -109,7 +115,7 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
      * A dummy fragment representing a section of the app, but that simply
      * displays dummy text.
      */
-    public static class TrainScheduleTableFragment extends Fragment {
+    public class TrainScheduleTableFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
@@ -122,18 +128,15 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main_table, container, false);
-            sView = (ScrollView) rootView;
+            final View rootView = inflater.inflate(R.layout.fragment_main_table, container, false);
+            //sView = (ScrollView) rootView;
             TableLayout table = (TableLayout) rootView.findViewById(R.id.table_schedule);
 
-
-
-            for (int i = 0; i < 100; i++) {
+            for (int i = 1000; i < 100; i++) {
                 TableRow tr = (TableRow) inflater.inflate(R.layout.row_table, null);
                 TextView tv1 = (TextView) tr.findViewById(R.id.row_time);
                 tv1.setText("U yeah " + i);
                 table.addView(tr);
-
             }
 
             try {
@@ -146,6 +149,16 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
                 // do nothing
             }
 
+            Button butRefresh = (Button) rootView.findViewById(R.id.schedule_refresh);
+            butRefresh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Requester req = new Requester();
+                    req.setMasterView(rootView);
+                    req.execute("jak");
+                }
+            });
+
             return rootView;
         }
 
@@ -154,8 +167,8 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
         {
             //---save whatever you need to persist—
 
-            outState.putInt("sViewX", sView.getScrollX());
-            outState.putInt("sViewY",sView.getScrollY());
+            //outState.putInt("sViewX", sView.getScrollX());
+            //outState.putInt("sViewY",sView.getScrollY());
 
             super.onSaveInstanceState(outState);
 
@@ -163,23 +176,36 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
 
     }
 
-    public class Requester extends AsyncTask<String, Integer, Long> {
+    private class Requester extends AsyncTask<String, Integer, Long> {
 
-        public void setSuperTable(TableLayout superTable) {
-            this.superTable = superTable;
+        Inflater inflater;
+
+        public void setMasterView(View masterView) {
+            this.masterView = masterView;
         }
 
-        TableLayout superTable;
+        View masterView;
 
         @Override
         protected Long doInBackground(String... destinations) {
             String destination = destinations[0];
-            HttpRequest x = HttpRequest.get("http://infoka.krl.co.id/to/" + destination);
-            String[] cookiesRaw1 = x.header("Cookie").split("; ");
-            String ci_session;
+            String originuri = "http://infoka.krl.co.id/to/" + destination;
+            HttpRequest x = HttpRequest.get(originuri);
+            String[] cookiesRaw1 = x.header("Set-Cookie").split("; ");
+            String ci_session = null;
             for (String cookies : cookiesRaw1 ) {
                 if (cookies.startsWith("ci_session")) {
                     ci_session = cookies.substring("ci_session".length());
+                }
+            }
+            String y = HttpRequest.get("http://infoka.krl.co.id/DwRrCVFeE1AUVB4UT09TRUpcFgoLXF4FAFFJCkZHdhpOR0YCGEhYS1lACghBVEx9cXxNVAcFAlICVgBVUTo1MTA4YWZmYQ==")
+                    .header("Referer", originuri).body();
+            Log.e("jiya", y);
+            TrainStatusRawData json = new Gson().fromJson(y, TrainStatusRawData.class);
+                    ;
+            for (String[] x1 : json.aaData ) {
+                for (String x2 : x1) {
+                    Log.e("aseek", "Got " + x2);
                 }
             }
             return null;
