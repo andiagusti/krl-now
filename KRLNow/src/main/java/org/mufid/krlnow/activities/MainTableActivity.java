@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -163,12 +164,19 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
                     req.setList(new ArrayList<TrainStatusModel>());
                     req.setInflater(_inflater);
                     req.setMasterView(rootView);
-                    //req.
+
                     Spinner destination = (Spinner) findViewById(R.id.destination_dropdown);
                     String destinationstring;
                     destinationstring = RegexRetrieve.first((String) destination.getSelectedItem(), "([A-Z]+)\\s-\\s[A-Za-z]+");
 
-                    Log.e("yea", destinationstring);
+                    ProgressBar pro = (ProgressBar) findViewById(R.id.request_progress);
+                    pro.setVisibility(View.VISIBLE);
+
+                    TableLayout table = (TableLayout) rootView.findViewById(R.id.table_schedule);
+                    table.removeAllViews();
+
+                    TextView notFoundMessage = (TextView) findViewById(R.id.text_no_trains_found);
+                    notFoundMessage.setVisibility(View.GONE);
 
                     req.execute(destinationstring.toLowerCase());
                 }
@@ -245,17 +253,25 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
         @Override
         protected void onPostExecute(E e) {
             super.onPostExecute(e);
+
+            ProgressBar pro = (ProgressBar) findViewById(R.id.request_progress);
+            pro.setVisibility(View.GONE);
+
             TableLayout table = (TableLayout) masterView.findViewById(R.id.table_schedule);
-            table.removeAllViews();
+
             List<TrainStatusModel> x = e;
             for (TrainStatusModel entry : x ) {
                 TableRow tr = (TableRow) inflater.inflate(R.layout.row_table, null);
                 TextView tv1 = (TextView) tr.findViewById(R.id.row_time);
                 TextView tv2 = (TextView) tr.findViewById(R.id.row_routename);
-                Log.e("yea", entry.getStatusString());
                 tv1.setText(entry.getTrainNumber() + "");
                 tv2.setText(entry.getStatusString() + "");
                 table.addView(tr);
+            }
+
+            if (x.size() == 0) {
+                TextView notFoundMessage = (TextView) findViewById(R.id.text_no_trains_found);
+                notFoundMessage.setVisibility(View.VISIBLE);
             }
         }
     }
