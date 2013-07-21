@@ -53,10 +53,11 @@
 
         <TableLayout
             android:id="@+id/table_schedule"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/section_label"
-            android:layout_alignLeft="@+id/section_label">
+            android:layout_alignLeft="@+id/section_label"
+            android:layout_marginBottom="10dp">
 
     </TableLayout>
 
