@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="station_list">
+        <item>JAK - Jakartakota</item>
+        <item>JYK - Jayakarta</item>
+        <item>MGB - Manggabesar</item>
+        <item>SW - Sawahbesar</item>
+        <item>JUA - Juanda</item>
+        <item>GMR - Gambir</item>
+        <item>GDD - Gondangdia</item>
+        <item>CKI - Cikini</item>
+        <item>MRI - Manggarai</item>
+        <item>TEB - Tebet</item>
+        <item>CW - Cawang</item>
+        <item>DRN - Durenkalibata</item>
+        <item>PSMB - Pasarminggubaru</item>
+        <item>PSM - Pasarminggu</item>
+        <item>TNT - Tanjungbarat</item>
+        <item>LNA - Lentengagung</item>
+        <item>UP - Universitaspancasila</item>
+        <item>UI - Universitasindonesia</item>
+        <item>POC - Pondokcina</item>
+        <item>DPB - Depokbaru</item>
+        <item>DP - Depok</item>
+        <item>CTA - Citayam</item>
+        <item>BJD - Bojonggede</item>
+        <item>CLT - Cilebut</item>
+        <item>BOO - Bogor</item>
+        <item>BKS - Bekasi</item>
+        <item>KRI - Kranji</item>
+        <item>CUK - Cakung</item>
+        <item>KLDB - Klenderbaru</item>
+        <item>BUA - Buaran</item>
+        <item>KLD - Klender</item>
+        <item>JNG - Jatinegara</item>
+        <item>POK - Pondokjati</item>
+        <item>KMT - Kramat</item>
+        <item>GST - Gangsentiong</item>
+        <item>PSE - Pasarsenen</item>
+        <item>KMO - Kemayoran</item>
+        <item>RJW - Rajawali</item>
+        <item>KPB - Kampungbandan</item>
+        <item>AC - Ancol</item>
+        <item>TPK - Tanjungpriok</item>
+        <item>TNG - Tanggerang</item>
+        <item>BPR - Batuceper</item>
+        <item>PI - Poris</item>
+        <item>KDS - Kalideres</item>
+        <item>RW - Rawabuaya</item>
+        <item>BOI - Bojongindah</item>
+        <item>PSG - Pesing</item>
+        <item>DU - Duri</item>
+        <item>THB - Tanahabang</item>
+        <item>AK - Angke</item>
+        <item>KRT - Karet</item>
+        <item>SUD - Sudirman</item>
+        <item>SRP - Serpong</item>
+        <item>RU - Rawabuntu</item>
+        <item>SDM - Sudimara</item>
+        <item>JRU - Jurangmangu</item>
+        <item>PDJ - Podokranji</item>
+        <item>KBY - Kebayoran</item>
+        <item>PLM - Palmerah</item>
+
+    </string-array>
+</resources>

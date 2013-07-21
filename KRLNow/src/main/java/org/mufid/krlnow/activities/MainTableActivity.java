@@ -1,4 +1,4 @@
-package org.mufid.krlnow.org.mufid.krlnow.activities;
+package org.mufid.krlnow.activities;
 
 import android.annotation.TargetApi;
 import android.app.ActionBar;
@@ -17,16 +17,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ScrollView;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.kevinsawicki.http.HttpRequest;
 import com.google.gson.Gson;
 
 import org.mufid.krlnow.R;
+import org.mufid.krlnow.etc.RegexRetrieve;
+import org.mufid.krlnow.models.TrainStatusModel;
 import org.mufid.krlnow.models.TrainStatusRawData;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.zip.Inflater;
 
 public class MainTableActivity extends FragmentActivity implements ActionBar.OnNavigationListener {
@@ -148,14 +154,23 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
             } catch (Exception ex) {
                 // do nothing
             }
-
+            final LayoutInflater _inflater = inflater;
             Button butRefresh = (Button) rootView.findViewById(R.id.schedule_refresh);
             butRefresh.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Requester req = new Requester();
+                    Requester<ArrayList<TrainStatusModel>> req = new Requester<ArrayList<TrainStatusModel>>();
+                    req.setList(new ArrayList<TrainStatusModel>());
+                    req.setInflater(_inflater);
                     req.setMasterView(rootView);
-                    req.execute("jak");
+                    //req.
+                    Spinner destination = (Spinner) findViewById(R.id.destination_dropdown);
+                    String destinationstring;
+                    destinationstring = RegexRetrieve.first((String) destination.getSelectedItem(), "([A-Z]+)\\s-\\s[A-Za-z]+");
+
+                    Log.e("yea", destinationstring);
+
+                    req.execute(destinationstring.toLowerCase());
                 }
             });
 
@@ -176,18 +191,28 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
 
     }
 
-    private class Requester extends AsyncTask<String, Integer, Long> {
+    private class Requester<E extends List> extends AsyncTask<String, Integer, E> {
 
-        Inflater inflater;
+        private void setInflater(LayoutInflater inflater) {
+            this.inflater = inflater;
+        }
+
+        LayoutInflater inflater;
 
         public void setMasterView(View masterView) {
             this.masterView = masterView;
         }
 
+        E list;
+
+        public void setList(E list) {
+            this.list = list;
+        }
+
         View masterView;
 
         @Override
-        protected Long doInBackground(String... destinations) {
+        protected E doInBackground(String... destinations) {
             String destination = destinations[0];
             String originuri = "http://infoka.krl.co.id/to/" + destination;
             HttpRequest x = HttpRequest.get(originuri);
@@ -198,17 +223,40 @@ public class MainTableActivity extends FragmentActivity implements ActionBar.OnN
                     ci_session = cookies.substring("ci_session".length());
                 }
             }
-            String y = HttpRequest.get("http://infoka.krl.co.id/DwRrCVFeE1AUVB4UT09TRUpcFgoLXF4FAFFJCkZHdhpOR0YCGEhYS1lACghBVEx9cXxNVAcFAlICVgBVUTo1MTA4YWZmYQ==")
-                    .header("Referer", originuri).body();
-            Log.e("jiya", y);
-            TrainStatusRawData json = new Gson().fromJson(y, TrainStatusRawData.class);
-                    ;
-            for (String[] x1 : json.aaData ) {
-                for (String x2 : x1) {
-                    Log.e("aseek", "Got " + x2);
-                }
+            String token = null;
+            String[] regexes = new String[] {
+                    "['|]([A-Za-z0-9]{45,999})['|].+.split"
+            };
+            for (int i = 0; token == null; i++) {
+                token = RegexRetrieve.first(x.body(), regexes[i]);
             }
-            return null;
+            try {
+                String y = HttpRequest.get("http://infoka.krl.co.id/" + token)
+                        .header("Referer", originuri).body();
+                TrainStatusRawData json = new Gson().fromJson(y, TrainStatusRawData.class);
+                json.fillListWithData(list);
+            } catch (Exception ex) {
+                token = token == null ? "null" : token;
+                Log.e("ERROR", "with token " + token);
+            }
+            return list;
+        }
+
+        @Override
+        protected void onPostExecute(E e) {
+            super.onPostExecute(e);
+            TableLayout table = (TableLayout) masterView.findViewById(R.id.table_schedule);
+            table.removeAllViews();
+            List<TrainStatusModel> x = e;
+            for (TrainStatusModel entry : x ) {
+                TableRow tr = (TableRow) inflater.inflate(R.layout.row_table, null);
+                TextView tv1 = (TextView) tr.findViewById(R.id.row_time);
+                TextView tv2 = (TextView) tr.findViewById(R.id.row_routename);
+                Log.e("yea", entry.getStatusString());
+                tv1.setText(entry.getTrainNumber() + "");
+                tv2.setText(entry.getStatusString() + "");
+                table.addView(tr);
+            }
         }
     }
 }

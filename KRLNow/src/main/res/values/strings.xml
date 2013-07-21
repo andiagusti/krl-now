@@ -3,9 +3,10 @@
 
     <string name="app_name">KRLNow</string>
     <string name="action_settings">Settings</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
+    <string name="title_section1">Schedule Table</string>
+    <string name="title_section2">Route Maps</string>
+    <string name="title_section3">Further Maps</string>
     <string name="refresh">Refresh</string>
+    <string name="destination">Tujuan Akhir</string>
 
 </resources>

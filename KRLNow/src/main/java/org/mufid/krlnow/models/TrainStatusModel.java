@@ -33,12 +33,19 @@ public class TrainStatusModel {
     String stationName;
     Date arrivalAtLastDestination;
 
-    public TrainStatusModel(int trainNumber, String routeName, Date arrivalAtLastDestination, TrainStatus trainStatus, String stationName) {
+    String statusString;
+
+    public String getStatusString() {
+        return statusString;
+    }
+
+    public TrainStatusModel(int trainNumber, String routeName, Date arrivalAtLastDestination, String statusString) {
         this.trainNumber = trainNumber;
         this.routeName = routeName;
-        this.trainStatus = trainStatus;
-        this.stationName = stationName;
+//        this.trainStatus = trainStatus;
+//        this.stationName = stationName;
         this.arrivalAtLastDestination = arrivalAtLastDestination;
+        this.statusString = statusString;
     }
 
 

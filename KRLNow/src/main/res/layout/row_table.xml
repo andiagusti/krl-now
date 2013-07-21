@@ -3,22 +3,47 @@
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginBottom="50dp"
+        android:background="@drawable/table_border">
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#dedede"
+                android:text="No. KA"
+                android:layout_gravity="left|center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="17:00"
+                android:id="@+id/row_time"
+                android:layout_marginRight="5dip"
+                android:layout_gravity="left|center_vertical"/>
 
-    <TextView
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="17:00"
-            android:id="@+id/row_time"
-            android:layout_gravity="left|center_vertical"/>
-
-    <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Medium Text"
-            android:id="@+id/row_routename"
-            android:layout_gravity="left|center_vertical"/>
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#dedede"
+                android:text="Posisi Terakhir"
+                android:layout_gravity="left|center_vertical"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/row_routename"
+                android:layout_gravity="left|center_vertical"/>
+    </LinearLayout>
 
 </TableRow>
